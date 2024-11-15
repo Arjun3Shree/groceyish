@@ -7,6 +7,9 @@ import Categories from './components/Categories'
 import FeaturedProducts from './components/FeaturedProducts'
 import BestSells from './components/BestSells'
 import TrendingSection from './components/TrendingSection'
+import FeaturesSection from './components/FeaturesSection'
+import Footer from './components/Footer'
+
 import Testsection from './components/Testsection'
 import GetWindowWidth from './components/GetWindowWidth'
 import BottomHeroSection from './components/BottomHeroSection'
@@ -23,6 +26,8 @@ function App() {
     <BestSells/>
     <TrendingSection/>
     <BottomHeroSection/>
+    <FeaturesSection/>
+    <Footer/>
     {/* <GetWindowWidth/> */}
     </>
   )

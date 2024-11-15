@@ -156,7 +156,7 @@ function BestSail() {
           <div className='relative border-2 border-solid border-gray-200 h-auto w-72 ml-2 mx-4 bg-[#FFF7E6CC]'>
           <img className='w-full h-full opacity-15' src="/src/assets/Images/bg-hero-img.png" alt="Coffe" />
           <p className='absolute transform font-quicksand-w700 text-5xl text-blue-950 -translate-x-1/2 -translate-y-1/2 top-[12%] left-[52%] h-[10%] w-[70%]'>10% OFF</p>
-          <p className='absolute transform font-quicksand-w500 text-xl text-center text-blue-950 -translate-x-1/2 -translate-y-1/2 top-32 left-12 h-[10%] w-[90%]'>For new member sign up at the first time</p>
+          <p className='absolute transform font-quicksand-w500 text-xl text-center text-blue-950 -translate-x-1/2 -translate-y-1/2 top-32 left-36 h-[10%] w-[90%]'>For new member sign up at the first time</p>
 
           {/* Email Input */}
           <p className='absolute transform font-quicksand-w500 text-lg -translate-x-1/2 -translate-y-1/2 top-[46%] left-[48%] h-[10%] w-[90%]'>Email address</p>
@@ -186,3 +186,5 @@ function BestSail() {
 }
 
 export default BestSail
+
+// 1514
