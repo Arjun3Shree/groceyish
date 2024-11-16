@@ -8,7 +8,8 @@ function Footer() {
             <div className='pt-10 mb-24 w-[90%] ml-[5%]'>
                 <ProgressBar height={1} value={0} max={10} color="green" />
             </div>
-            <div className="flex bg-white gap-24 justify-center">
+
+            <div className="flex bg-white gap-[12%] justify-center">
 
                 <div className="flex-col space-y-6">
                     <div className="flex">
@@ -26,7 +27,7 @@ function Footer() {
 
                 <div className="flex-col bg-white space-y-2">
                     <p className='font-quicksand-w600 text-2xl mb-8'>Account</p>
-                    <p className='font-quicksand-w500'> Wishlist</p>
+                    <p className='font-quicksand-w500'>Wishlist</p>
                     <p className='font-quicksand-w500'>Cart</p>
                     <p className='font-quicksand-w500'>Track Order</p>
                     <p className='font-quicksand-w500'>Shipping Details</p>
@@ -51,13 +52,15 @@ function Footer() {
                     <p className='font-quicksand-w500'>Privacy Policy</p>
                 </div>
             </div>
+
             {/* Footer Bar Bottom */}
             <div className='pb-10 mt-24 w-[90%] ml-[5%]'>
                 <ProgressBar height={1} value={0} max={10} color="green" />
             </div>
 
+            {/* Rights Section */}
             <div className="flex justify-between mb-7">
-                <p className='ml-6'>2024, All rights recived</p>
+                <p className='ml-6'> © 2024, All rights recived</p>
                 <img src="src\assets\Images\Payment-Img.png" alt="" />
                 <div className="flex gap-3 mr-6">
                     <img className='h-9 w-9' src="src\assets\Images\Facebook.png" alt="" />

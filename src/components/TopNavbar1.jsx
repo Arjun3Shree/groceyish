@@ -10,7 +10,7 @@ function TopNavbar1() {
 
     return (
         <>
-            <nav className='p-3 flex bg-white fixed top-0 left-0 w-[100%] overflow-hidden'>
+            <nav className='z-50 p-3 flex bg-white fixed top-0 left-0 w-[100%] overflow-hidden'>
                 <div className='flex flex-nowrap items-center justify-between space-x-12 w-full'>
 
                     {/* Nav Icon */}

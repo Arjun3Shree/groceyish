@@ -1,6 +1,16 @@
 import React from 'react'
+import CardFeatProducts from './Cards/CardFeatProducts'
 
 function FeaturedProducts() {
+
+    let cardDetails = {
+        1: { category: 'Vegetables', itemName: 'Redish 500g', rating: '4', vender: 'Mr.food', offerPrice:'2', mrp:'3.99', imgName: 'Feat-Redis'},
+        2: { category: 'Vegetables', itemName: 'Potatos 1kg', rating: '4', vender: 'Mr.food', offerPrice:'1', mrp:'1.99', imgName: 'Feat-Patato'},
+        3: { category: 'Fruits', itemName: 'Tomatos 200g', rating: '4', vender: 'Mr.food', offerPrice:'0.30', mrp:'0.99', imgName: 'Feat-Tamato'},
+        4: { category: 'Vegetables', itemName: 'Broccoli 1Kg', rating: '4', vender: 'Mr.food', offerPrice:'1.50', mrp:'2.99', imgName: 'Feat-Brocoly'},
+        5: { category: 'Vegetables', itemName: 'Green Beans 250g', rating: '4', vender: 'Mr.food', offerPrice:'1', mrp:'1.99', imgName: 'Feat-GreenBeans'},
+    }
+
     return (
         <>
             <div className="h-auto mt-9 p-10 bg-white">
@@ -18,158 +28,25 @@ function FeaturedProducts() {
                 </div>
 
                 {/* Buttons */}
+                
                 <div className='flex py-12'>
                     <p className='bg-gray-200 px-2 py-1 m-auto rounded-full'><i className="fas fa-arrow-left text-gray-600"></i></p>
 
                     {/* Cards */}
-                    <div className='border-2 border-solid border-gray-200 h-auto w-64 rounded-lg mx-4'>
-                        <img src="/src/assets/Images/Feat-Redis.png" alt="" />
-                        <p className='font-quicksand-w300 text-lg text-gray-400 ml-2'>Vegetables</p>
-                        <p className='font-quicksand-w500 text-2xl ml-2'>Redish 500g</p>
-                        <div className="flex ml-2">
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <p className='font-quicksand-w300 text-sm'>(4)</p>
-                        </div>
-                        <div className="flex ml-2">
-                            <p className='font-quicksand-w400 text-lg'>By</p>
-                            <p className='font-quicksand-w400 text-lg text-green-500'>&nbsp; Mr.food</p>
-                        </div>
-
-                        <div className="flex justify-between">
-                            <dic className="flex ml-2 gap-2">
-                                <p className='font-quicksand-w600 text-2xl text-green-600 my-auto'>$2</p>
-                                <p className='font-quicksand-w400 text-xl line-through text-gray-400 my-auto'>$3.99</p>
-                            </dic>
-
-                            <button className='bg-green-100 flex rounded-sm mr-2 mb-2'>
-                                <i className="fas fa-shopping-cart text-green-600 my-auto mx-1 "></i>
-                                <p className='font-quicksand-w400 text-xl text-green-700 mx-1'>Add</p>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div className='border-2 border-solid border-gray-200 h-auto w-64 rounded-lg mx-4'>
-                        <img src="/src/assets/Images/Feat-Patato.png" alt="" />
-                        <p className='font-quicksand-w300 text-lg text-gray-400 ml-2'>Vegetables</p>
-                        <p className='font-quicksand-w500 text-2xl ml-2'>Potatos 1kg</p>
-                        <div className="flex ml-2">
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <p className='font-quicksand-w300 text-sm'>(4)</p>
-                        </div>
-                        <div className="flex ml-2">
-                            <p className='font-quicksand-w400 text-lg'>By</p>
-                            <p className='font-quicksand-w400 text-lg text-green-500'>&nbsp; Mr.food</p>
-                        </div>
-
-                        <div className="flex justify-between">
-                            <div className="flex ml-2 gap-2">
-                                <p className='font-quicksand-w600 text-2xl text-green-400 my-auto'>$1</p>
-                                <p className='font-quicksand-w400 text-xl line-through text-gray-400 my-auto'>$1.99</p>
-                            </div>
-
-                            <button className='bg-green-100 flex rounded-sm mr-2 mb-2'>
-                                <i className="fas fa-shopping-cart text-green-600 my-auto mx-1 "></i>
-                                <p className='font-quicksand-w400 text-xl text-green-700 mx-1'>Add</p>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div className='border-2 border-solid border-gray-200 h-auto w-64 rounded-lg mx-4'>
-                        <img src="/src/assets/Images/Feat-Tamato.png" alt="" />
-                        <p className='font-quicksand-w300 text-lg text-gray-400 ml-2'>Fruits</p>
-                        <p className='font-quicksand-w500 text-2xl ml-2'>Tomatos 200g</p>
-                        <div className="flex ml-2">
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <p className='font-quicksand-w300 text-sm'>(4)</p>
-                        </div>
-                        <div className="flex ml-2">
-                            <p className='font-quicksand-w400 text-lg'>By</p>
-                            <p className='font-quicksand-w400 text-lg text-green-500'>&nbsp; Mr.food</p>
-                        </div>
-
-                        <div className="flex justify-between">
-                            <dic className="flex ml-2 gap-2">
-                                <p className='font-quicksand-w600 text-2xl text-green-400 my-auto'>$0.30</p>
-                                <p className='font-quicksand-w400 text-xl line-through text-gray-400 my-auto'>$0.99</p>
-                            </dic>
-
-                            <button className='bg-green-100 flex rounded-sm mr-2 mb-2'>
-                                <i className="fas fa-shopping-cart text-green-600 my-auto mx-1 "></i>
-                                <p className='font-quicksand-w400 text-xl text-green-700 mx-1'>Add</p>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className='border-2 border-solid border-gray-200 h-auto w-64 rounded-lg mx-4'>
-                        <img src="/src/assets/Images/Feat-Brocoly.png" alt="" />
-                        <p className='font-quicksand-w300 text-lg text-gray-400 ml-2'>Vegetables</p>
-                        <p className='font-quicksand-w500 text-2xl ml-2'>Broccoli 1Kg</p>
-                        <div className="flex ml-2">
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <p className='font-quicksand-w300 text-sm'>(4)</p>
-                        </div>
-                        <div className="flex ml-2">
-                            <p className='font-quicksand-w400 text-lg'>By</p>
-                            <p className='font-quicksand-w400 text-lg text-green-500'>&nbsp; Mr.food</p>
-                        </div>
-
-                        <div className="flex justify-between">
-                            <dic className="flex ml-2 gap-2">
-                                <p className='font-quicksand-w600 text-2xl text-green-400 my-auto'>$1.50</p>
-                                <p className='font-quicksand-w400 text-xl line-through text-gray-400 my-auto'>$2.99</p>
-                            </dic>
-
-                            <button className='bg-green-100 flex rounded-sm mr-2 mb-2'>
-                                <i className="fas fa-shopping-cart text-green-600 my-auto mx-1 "></i>
-                                <p className='font-quicksand-w400 text-xl text-green-700 mx-1'>Add</p>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className='border-2 border-solid border-gray-200 h-auto w-64 rounded-lg mx-4'>
-                        <img src="/src/assets/Images/Feat-GreenBeans.png" alt="" />
-                        <p className='font-quicksand-w300 text-lg text-gray-400 ml-2'>Vegetables</p>
-                        <p className='font-quicksand-w500 text-2xl ml-2'>Green Beans 250g</p>
-                        <div className="flex ml-2">
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <i className="fas fa-star text-yellow-400"></i>
-                            <p className='font-quicksand-w300 text-sm'>(4)</p>
-                        </div>
-                        <div className="flex ml-2">
-                            <p className='font-quicksand-w400 text-lg'>By</p>
-                            <p className='font-quicksand-w400 text-lg text-green-500'>&nbsp; Mr.food</p>
-                        </div>
-
-                        <div className="flex justify-between">
-                            <dic className="flex ml-2 gap-2">
-                                <p className='font-quicksand-w600 text-2xl text-green-400 my-auto'>$1</p>
-                                <p className='font-quicksand-w400 text-xl line-through text-gray-400 my-auto'>$1.99</p>
-                            </dic>
-
-                            <button className='bg-green-100 flex rounded-sm mr-2 mb-2'>
-                                <i className="fas fa-shopping-cart text-green-600 my-auto mx-1 "></i>
-                                <p className='font-quicksand-w400 text-xl text-green-700 mx-1'>Add</p>
-                            </button>
-                        </div>
-                    </div>
-
-
+                    {
+                        Object.values(cardDetails).map((card, index)=>(
+                            <CardFeatProducts
+                            key={index}
+                            category={card.category}
+                            itemName={card.itemName}
+                            rating={card.rating}
+                            vender={card.vender}
+                            offerPrice={card.offerPrice}
+                            mrp={card.mrp}
+                            imgName={card.imgName}
+                            />
+                        ))
+                    }
 
                     <p className='bg-gray-200 px-2 py-1 m-auto rounded-full' ><i className="fas fa-arrow-right text-gray-600"></i></p>
                 </div>
@@ -178,7 +55,7 @@ function FeaturedProducts() {
                 {/* Advartise / Offer Section */}
                 <div className="flex gap-x-[3vw] mt-10">
 
-                    <div className='h-96 w-[42%] ml-[4%] bg-[#FFF5E1D9] overflow-hidden relative rounded-sm'>
+                    <div className='h-72 2xl:h-96 w-[42%] ml-[4%] bg-[#FFF5E1D9] overflow-hidden relative rounded-sm'>
                         <img src="src\assets\Images\bg-hero-img.png" className=' w-full h-[170%] opacity-25' alt="" />
                         <img src="src\assets\Images\adv-one.png" className='absolute transform top-[50%] left-[83%] -translate-x-1/2 -translate-y-1/2 h-[99%] w-[75%]' alt="" />
                         <div className='absolute transform top-[50%] left-[40%] -translate-x-1/2 -translate-y-1/2 h-[80%] w-[65%]'>
@@ -189,7 +66,7 @@ function FeaturedProducts() {
                         </div>
                     </div>
 
-                    <div className='h-96 w-[42%] ml-12 bg-[#D2EFE1D9] overflow-hidden relative rounded-sm'>
+                    <div className='h-72 2xl:h-96 w-[42%] ml-12 bg-[#D2EFE1D9] overflow-hidden relative rounded-sm'>
                         <img src="src\assets\Images\bg-hero-img.png" className=' w-full h-[170%] opacity-25' alt="" />
                         <img src="src\assets\Images\adv-two.png" className='absolute transform top-[58%] left-[63%] -translate-x-1/2 -translate-y-1/2 h-[85%] w-[75%]' alt="" />
                         <div className='absolute transform top-[50%] left-[40%] -translate-x-1/2 -translate-y-1/2 h-[80%] w-[65%]'>

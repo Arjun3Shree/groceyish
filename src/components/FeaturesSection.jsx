@@ -3,7 +3,7 @@ import React from 'react'
 function FeaturesSection() {
   return (
     <>
-        <div className="flex bg-white mt-24 mb-10 gap-32 justify-center">
+        <div className="flex bg-white mt-24 mb-10 gap-[19%] justify-center">
             <div className="flex w-64">
                 <img className='h-12 w-12 my-auto' src="src\assets\Images\Group1.png" alt="" />
                 <div className="flex-col ml-3">

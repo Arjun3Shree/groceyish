@@ -1,6 +1,18 @@
 import React from 'react'
+import ExploreCategoties from './Cards/ExploreCategoties'
 
 function Categories() {
+
+    let cardDetails = {
+        1: {colorCode:'#FEEFEA', imgName:'Ctg-Peach', itemName:'Peach', noOfItem:'20'},
+        2: {colorCode:'#FFF3FF', imgName:'Ctg-Vegitables', itemName:'Vegetables', noOfItem:'220'},
+        3: {colorCode:'#F2FCE4', imgName:'Ctg-Strawbery', itemName:'Strawberry', noOfItem:'10'},
+        4: {colorCode:'#FEEFEA', imgName:'Ctg-Apple', itemName:'Apple', noOfItem:'40'},
+        5: {colorCode:'#ECFFEC', imgName:'Ctg-Orange', itemName:'Orange', noOfItem:'23'},
+        6: {colorCode:'#FFFCEB', imgName:'Ctg-Pattato', itemName:'Patato', noOfItem:'3'},
+        7: {colorCode:'#DEF9EC', imgName:'Ctg-Carrot', itemName:'Carrot', noOfItem:'9'}
+    }
+
     return (
         <>
             <div className="h-auto mt-9 p-10 bg-white">
@@ -9,7 +21,7 @@ function Categories() {
                 <div className="h-2 pl-14 flex justify-between">
                     <p className='font-quicksand-w500 text-2xl'>Explore Categories</p>
                     <div className="h-4 font-quicksand-w500 flex gap-x-5 mr-14">
-                        <p>All</p>
+                        <p className='font-quicksand-w600 text-green-600' >All</p>
                         <p>Vegetables</p>
                         <p>Fruits</p>
                         <p>Coffe & Teas</p>
@@ -21,63 +33,21 @@ function Categories() {
                 <div className='flex py-14 justify-between '>
                     <p className='bg-gray-200 px-2 py-1 mt-12 rounded-full'><i className="fas fa-arrow-left text-gray-600"></i></p>
 
+
                     {/* Cards */}
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#FEEFEA]'>
-                            <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Peach.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Peach</p>
-                            <p className="font-quicksand-w400 text-sm" >20 Items</p>
-                        </div>
-                    </div>
+                    {/* Call through Props */}
 
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#FFF3FF]'>
-                        <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Vegitables.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Vegetables</p>
-                            <p className="font-quicksand-w400 text-sm" >220 Items</p>
-                        </div>
-                    </div>
-
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#F2FCE4]'>
-                        <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Strawbery.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Strawberry</p>
-                            <p className="font-quicksand-w400 text-sm" >10 Items</p>
-                        </div>
-                    </div>
-
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#FEEFEA]'>
-                        <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Apple.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Apple</p>
-                            <p className="font-quicksand-w400 text-sm" >40 Items</p>
-                        </div>
-                    </div>
-
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#ECFFEC]'>
-                        <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Orange.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Orange</p>
-                            <p className="font-quicksand-w400 text-sm" >23 Items</p>
-                        </div>
-                    </div>
-
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#FFFCEB]'>
-                        <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Pattato.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Patato</p>
-                            <p className="font-quicksand-w400 text-sm" >3 Items</p>
-                            
-                        </div>
-                    </div>
-
-                    <div className="h-4 text-center">
-                        <div className='w-32 h-36 rounded bg-[#DEF9EC]'>
-                        <img className='h-24 w-24 mx-auto' src="/src/assets/Images/Ctg-Carrot.png" alt="Peach-Img" />
-                            <p className="font-quicksand-w600 text-lg" >Carrot</p>
-                            <p className="font-quicksand-w400 text-sm" >9 Items</p>
-                        </div>
-                    </div>
+                    {
+                        Object.values(cardDetails).map((card, index)=>(
+                            <ExploreCategoties
+                            key={index}
+                            colorCode={card.colorCode}
+                            imgName={card.imgName}
+                            itemName={card.itemName}
+                            noOfItem={card.noOfItem}
+                            />
+                        ))
+                    }
 
                     <p className='bg-gray-200 px-2 py-1 mt-12 rounded-full' ><i className="fas fa-arrow-right text-gray-600"></i></p>
                 </div>
