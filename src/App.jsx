@@ -1,34 +1,51 @@
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import NavBarContextProvider from './context/NavBarContextProvider';
 
 import './App.css'
-import TopNavbar1 from "./components/TopNavbar1"
-import TopNavbar2 from "./components/TopNavbar2"
-import HeroSection from './components/HeroSection'
-import Categories from './components/Categories'
-import FeaturedProducts from './components/FeaturedProducts'
-import BestSells from './components/BestSells'
-import TrendingSection from './components/TrendingSection'
-import FeaturesSection from './components/FeaturesSection'
-import Footer from './components/Footer'
+import Home from './components/Home/Home';
+import HotDeals from './components/HotDeals/HotDeals';
+import Promotions from './components/Promotions/Promotions';
+import TopNavbar1 from './components/Sections/TopNavbar1';
+import TopNavbar2 from './components/Sections/TopNavbar2';
+import FeaturesSection from './components/Sections/FeaturesSection';
+import NewProducts from './components/NewProducts/NewProducts';
+import Support from './components/Support/Support';
+import DelayInDelevery from './components/Support/DelayInDelevery';
+import AfterDelevery from './components/Support/AfterDelevery';
+import QualityIssue from './components/Support/QualityIssue';
+import Wishlist from './components/WishList/Wishlist';
+import Footer from './components/Sections/Footer';
 
-import Testsection from './components/Testsection'
-import GetWindowWidth from './components/GetWindowWidth'
-import BottomHeroSection from './components/BottomHeroSection'
+
 
 function App() {
 
   return (
-    <>  
+    <>
+    <NavBarContextProvider>
     <TopNavbar1/>
     <TopNavbar2/>
-    <HeroSection/>
-    <Categories/>
-    <FeaturedProducts/>
-    <BestSells/>
-    <TrendingSection/>
-    <BottomHeroSection/>
+    <Router>
+      
+      <Routes>
+        <Route path="/" element={ <Home/> } />
+        <Route path="/hotdeals" element={ <HotDeals/> } />
+        <Route path='/promotion' element={<Promotions/>} />
+        <Route path='/newprds' element={<NewProducts/>} />
+        <Route path='/support' element={<Support/>} />
+        <Route path='/support/delayindelevery' element={<DelayInDelevery/>} />
+        <Route path='/support/afterdelevery' element={<AfterDelevery/>} />
+        <Route path='/support/qualityissue' element={<QualityIssue/>} />
+        <Route path='/wishlist' element={<Wishlist/>} />
+      </Routes>
+
+    </Router>
     <FeaturesSection/>
     <Footer/>
+
+    
     {/* <GetWindowWidth/> */}
+    </NavBarContextProvider>
     </>
   )
 }
