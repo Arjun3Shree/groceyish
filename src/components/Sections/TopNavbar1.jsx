@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import NavBarContext from '../../context/NavbarContext';
 
 function TopNavbar1() {
+
+    const { activeButton, setActiveButton, navbarStates, navigationButtons } = useContext(NavBarContext)
+
     // const navigate = useNavigate();
     const [margintop, setMargintop] = useState("mt-[-90%]")
 
@@ -8,7 +12,7 @@ function TopNavbar1() {
         setMargintop((prevclssname) => prevclssname === "mt-[-90%]" ? "mt-[5%]" : "mt-[-90%]")
     }
 
-    
+
 
     return (
         <>
@@ -45,37 +49,77 @@ function TopNavbar1() {
                     {/* Info items */}
                     <div className={`md:flex ${margintop} md:mt-0 duration-500`}>
                         <ul className='items-start flex mt-8 md:mt-0 flex-col gap-8 space-y-3 md:flex-row md:items-center md:space-x-[5vh]'>
-                            {/* Wish list */}
-                            <li className='-mx-20 md:mx-0 px-[3vh] whitespace-nowrap'>
-                                <i className="fas fa-heart text-gray-600">
-                                </i>
-                                <span className="font-quicksand-w500 text-gray-600 px-1">
-                                    <a href='/wishlist'>
-                                        Wishlist
-                                    </a>
-                                </span>
-                                <span className="font-quicksand-w600 mx-[10px] my-[-29px] absolute bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                                    5
-                                </span>
-                            </li>
+                            {/* Wishlist */}
+                            {Object.entries(navigationButtons).slice(5, 6).map(([key, button]) => (
+                                <li className='-mx-20 md:mx-0 px-[3vh] whitespace-nowrap'>
+                                    <button onClick={() => setActiveButton(key)}>
+                                        <i className={`fas ${button.icon} ${activeButton === key
+                                            ? 'text-green-600'
+                                            : 'text-gray-500'
+                                            }`}>
+                                        </i>
+                                        <span className={`${activeButton === key
+                                            ? 'text-green-600 font-quicksand-w600'
+                                            : 'text-gray-500 font-quicksand-w500'
+                                            } px-1`}>
+                                            <a href={button.route}>
+                                                {button.label}
+                                            </a>
+                                        </span>
+                                        <span className="font-quicksand-w600 mx-[10px] my-[-29px] absolute bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                                            {navbarStates.wishlistCount}
+                                        </span>
+                                    </button>
+
+                                </li>
+                            ))}
 
                             {/* Cart */}
-                            <li className='-mx-28 md:mx-0 flex items-center px-[1vh] whitespace-nowrap mr-[3vh]' >
+                            {Object.entries(navigationButtons).slice(6, 7).map(([key, button]) => (
+                                <li className='-mx-28 md:mx-0 flex items-center px-[1vh] whitespace-nowrap mr-[3vh]' >
+                                    <i className={`fas ${button.icon} ${activeButton === key
+                                        ? 'text-green-600'
+                                        : 'text-gray-500'
+                                        }`}>
+                                    </i>
+                                    <div className="flex  text-center">
+                                        <span className={`${activeButton === key
+                                            ? 'text-green-600 font-quicksand-w600'
+                                            : 'text-gray-500 font-quicksand-w500'
+                                            } px-1`}>
+                                            <button onClick={() => setActiveButton(key)}>
+                                                <a href={`${button.route}`}>{button.label}</a>
+                                            </button>
+                                        </span>
+
+                                        <span className='font-quicksand-w500 text-green-500 mx-[-69%]'>
+                                            <br />${navbarStates.cartTotal}
+                                        </span>
+                                        <span className="font-quicksand-w500 mx-[-9px] absolute bg-green-500 text-white text-xs rounded-full w-4 h-4 flex justify-center">
+                                            {navbarStates.cartCount}
+                                        </span>
+                                    </div>
+                                    <i className='ml-[-55px] mt-[23px] fas fa-chevron-down text-gray-600'></i>
+                                </li>
+                                
+                            ))}
+
+                            {/* <li className='-mx-28 md:mx-0 flex items-center px-[1vh] whitespace-nowrap mr-[3vh]' >
                                 <i className="fas fa-shopping-cart text-gray-600">
                                 </i>
                                 <div className="flex  text-center">
                                     <span className='font-quicksand-w500 text-gray-600 px-1'>
-                                        My Cart
+                                        <a href="/mycart">My Cart</a>
                                     </span>
                                     <span className='font-quicksand-w500 text-green-500 mx-[-69%]'>
-                                        <br />$21
+                                        <br />${navbarStates.cartTotal}
                                     </span>
                                     <span className="font-quicksand-w500 mx-[-9px] absolute bg-green-500 text-white text-xs rounded-full w-4 h-4 flex justify-center">
-                                        1
+                                        {navbarStates.cartCount}
                                     </span>
                                 </div>
                                 <i className='ml-[-55px] mt-[23px] fas fa-chevron-down text-gray-600'></i>
-                            </li>
+                            </li> */}
 
                             {/* Profile */}
                             <li className='flex items-center flex-shrink-0'>

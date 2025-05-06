@@ -4,26 +4,14 @@ import NavBarContext from '../../context/NavbarContext';
 
 function TopNavbar2() {
 
-    const {setActiveNavbar, setHomeBtn, setHotDealsBtn, 
-        setPromotionBtn, setNewproductsBtn, setSupportcenterBtn} = useContext(NavBarContext)
+    const {activeButton, setActiveButton, navigationButtons} = useContext(NavBarContext)
 
-    let home = 'home';
+    const [margintop, setMargintop] = useState('mt-[-95%]')    
 
-    const [margintop, setMargintop] = useState('mt-[-95%]')
-    const [activeButton, setActiveButton] = useState(()=>{ 
-        return localStorage.getItem('activeButton') || home;
-    })
-
-    
-    let hotdeals = 'hotdeals'
-    let promotions = 'promotions'
-    let newproducts = 'newproducts'
-    let support = 'support'
-    
-    useEffect(()=>{
-        localStorage.setItem('activeButton', activeButton);
-    }, [activeButton])
-
+    const handleButtonClick = (buttonName) => {
+        setActiveNavbar('navbar1');
+        
+    }
 
     const navToggler = () => {
         setMargintop((prevclssname) => prevclssname === "mt-[-95%]" ? "mt-[5%]" : "mt-[-95%]")
@@ -46,61 +34,33 @@ function TopNavbar2() {
 
 
                     {/* Product Control Buttons */}
+                    {/* Navigation Buttons */}
                     <div className="flex flex-wrap justify-center md:justify-start items-center md:space-x-[4vw]">
                         <ul className="flex md:flex-row flex-col md:items-center gap-8 md:gap-[5vw]">
-
-                            <li>
-                                <button onClick={()=> setActiveButton(home)}>
-                                    <li>
-                                        <a href="/" className={`flex items-center ${activeButton === 'home'? 'text-green-600':'text-gray-500'} `}>
-                                            <i className="fas fa-home mr-1"></i>
-                                            <span className={` ${activeButton === 'home' ? 'font-quicksand-w600':'font-quicksand-w400'}`}>Home</span>
+                            {Object.entries(navigationButtons).slice(0,5).map(([key, button]) => (
+                                <li key={key}>
+                                    <button onClick={() => setActiveButton(key)}>
+                                        <a 
+                                            href={button.route} 
+                                            className={`flex items-center ${
+                                                activeButton === key 
+                                                    ? 'text-green-600' 
+                                                    : 'text-gray-500'
+                                            } whitespace-nowrap`}
+                                        >
+                                            <i className={`fas ${button.icon} mr-1`}></i>
+                                            <span className={`${
+                                                activeButton === key 
+                                                    ? 'font-quicksand-w600' 
+                                                    : 'font-quicksand-w400'
+                                            }`}>
+                                                {button.label}
+                                            </span>
                                         </a>
-                                    </li>
-                                </button>
-                            </li>
-
-                            <li>
-                                <button onClick={()=> setActiveButton(hotdeals)}>
-                                    <a href="/hotdeals" className={`flex items-center ${activeButton === 'hotdeals'? 'text-green-600':'text-gray-500'} whitespace-nowrap`}>
-                                        <i className="fas fa-fire mr-1">
-                                            <span className={` ${activeButton === 'hotdeals' ? 'font-quicksand-w600':'font-quicksand-w400'}`}> Hot deals</span>
-                                        </i>
-                                    </a>
-                                </button>
-                            </li>
-
-                            <li>
-                                <button onClick={()=> setActiveButton(promotions)}>
-                                    <a href="/promotion" className={`flex items-center ${activeButton === 'promotions'? 'text-green-600':'text-gray-500'} whitespace-nowrap`}>
-                                        <i className="fas fa-percent mr-1">
-                                            <span className={` ${activeButton === 'promotions' ? 'font-quicksand-w600':'font-quicksand-w400'}`}> Promotions</span>
-                                        </i>
-                                    </a>
-                                </button>
-                            </li>
-
-                            <li>
-                                <button onClick={()=> setActiveButton(newproducts)}>
-                                    <a href="/newprds" className={`flex items-center ${activeButton === 'newproducts'? 'text-green-600':'text-gray-500'} whitespace-nowrap`}>
-                                        <i className="fas fa-bullhorn mr-1">
-                                            <span className={` ${activeButton === 'newproducts' ? 'font-quicksand-w600':'font-quicksand-w400'}`} > New Products</span>
-                                        </i>
-                                    </a>
-                                </button>
-                            </li>
-
-                            <li>
-                                <button onClick={()=> setActiveButton(support)}>
-                                    <a href="/support" className={`flex items-center text-gray-500 whitespace-nowrap`}>
-                                        <i className={`fas fa-phone-alt ${activeButton === 'support'? 'text-red-700':'text-green-500'} mr-2`}></i>
-                                        <span className={`font-quicksand-w400 ${activeButton === 'support'? 'text-red-400':'text-green-500'} `}>12333-7777</span>
-                                        <span className={` ${activeButton === 'support'? 'text-green-500':'text-gray-500'} font-quicksand-w400 ml-2`}>24/7 support center</span>
-                                    </a>
-                                </button>
-                            </li>
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
-
                     </div>
                 </div>
 
