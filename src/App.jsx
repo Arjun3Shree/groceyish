@@ -17,6 +17,7 @@ import QualityIssue from './components/Support/QualityIssue';
 import Wishlist from './components/WishList/Wishlist';
 import MyCart from './components/MyCart/MyCart';
 import Footer from './components/Sections/Footer';
+import Register from './components/Register/Register';
 
 
 
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         {/* Login route outside NavBarContextProvider */}
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register/>}/>
         
         {/* All other routes wrapped in NavBarContextProvider */}
         <Route path="/*" element={

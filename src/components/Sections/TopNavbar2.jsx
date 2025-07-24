@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import NavBarContext from '../../context/NavbarContext';
-
+import { getAllProductListHandler } from '../../Handlers/productHandler';
 
 function TopNavbar2() {
 
@@ -26,7 +26,7 @@ function TopNavbar2() {
 
                     {/* Home Button */}
                     <div className="pl-[5%] items-center mx-5 ml-[0.2vw] hidden md:flex">
-                        <button className="flex items-center bg-green-500 text-white px-4 py-2 rounded whitespace-nowrap">
+                        <button onClick={getAllProductListHandler} className="flex items-center bg-green-500 text-white px-4 py-2 rounded whitespace-nowrap">
                             <i className="fas fa-th-large mr-1"></i>
                             <span className='font-quicksand-w400'>Brows All Categories</span>
                         </button>
