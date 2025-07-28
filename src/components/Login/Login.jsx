@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { loginHandler } from "../../Handlers/authHandler.js";
+import { useNavigate, useLocation } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Login() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const [formdata, setFormData] = useState({
         email: "",
         password: ""
@@ -14,10 +20,13 @@ function Login() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        loginHandler(formdata);
+        const res = await loginHandler(formdata);
+        console.log("REsponse:", res);
+        toast.success("Login successfull!!");
         setFormData({email: "", password: ""});
+        navigate(from, { replace: true });
     }
 
     return (

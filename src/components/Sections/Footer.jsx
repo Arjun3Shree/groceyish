@@ -1,5 +1,12 @@
-import React from 'react'
-import ProgressBar from './ProgressBar'
+import React from 'react';
+import ProgressBar from './ProgressBar';
+import MainLogo from "/Assets/Img/MainLogo.png";
+import Payment_Img from "/Assets/Img/Payment-Img.png";
+import Twiter from "/Assets/Img/Twiter.png";
+import Linkedin from "/Assets/Img/Linkedin.png";
+import Insta from "/Assets/Img/Insta.png";
+import Facebook from "/Assets/Img/Facebook.png"
+
 
 function Footer() {
     return (
@@ -13,7 +20,7 @@ function Footer() {
 
                 <div className="flex-col space-y-6">
                     <div className="flex">
-                        <img className='h-12 w-12' src="src\assets\Images\MainLogo.png" alt="" />
+                        <img className='h-12 w-12' src={MainLogo} alt="" />
                         <div className='flex-col'>
                             <p className='font-quicksand-w600 text-green-600 text-lg'>Groceyish</p>
                             <p className='text-xs'>GROCERY</p>
@@ -61,12 +68,12 @@ function Footer() {
             {/* Rights Section */}
             <div className="md:flex justify-between mb-7">
                 <p className=' ml-6'> © 2024, All rights recived</p>
-                <img className='sm:justify-self-center' src="src\assets\Images\Payment-Img.png" alt="" />
+                <img className='sm:justify-self-center' src={Payment_Img} alt="" />
                 <div className="flex gap-3 mr-6 sm:justify-self-end">
-                    <img className='h-9 w-9' src="src\assets\Images\Facebook.png" alt="" />
-                    <img className='h-9 w-9' src="src\assets\Images\Linkedin.png" alt="" />
-                    <img className='h-9 w-9' src="src\assets\Images\Insta.png" alt="" />
-                    <img className='h-9 w-9' src="src\assets\Images\Twiter.png" alt="" />
+                    <img className='h-9 w-9' src={Facebook} alt="" />
+                    <img className='h-9 w-9' src={Linkedin} alt="" />
+                    <img className='h-9 w-9' src={Insta} alt="" />
+                    <img className='h-9 w-9' src={Twiter} alt="" />
                 </div>
             </div>
         </>

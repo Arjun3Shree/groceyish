@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import NavBarContext from '../../context/NavbarContext';
+import Glogo from "/Assets/Img/Grosory_Logo.PNG";
 
 function TopNavbar1() {
 
@@ -12,7 +13,8 @@ function TopNavbar1() {
         setMargintop((prevclssname) => prevclssname === "mt-[-90%]" ? "mt-[5%]" : "mt-[-90%]")
     }
 
-
+    const active = localStorage.getItem("isloggedIn") || false;
+    const userName = localStorage.getItem("callsign");
 
     return (
         <>
@@ -22,7 +24,7 @@ function TopNavbar1() {
                     {/* Nav Icon */}
                     <div className='flex -mt-40 md:mt-0 md:items-center md:mx-[8vh]'>
                         <a href="#" id='brand' className='flex gap-2 items-center'>
-                            <img className='object-cover max-w-12 max-h-12' src="src\assets\Images\Grosory_Logo.PNG" alt="GrosoryImage" />
+                            <img className='object-cover max-w-12 max-h-12' src={Glogo} alt="GrosoryImage" />
                             <div className='flex flex-col text-start'>
                                 <span className='font-quicksand-w700 text-lg font-medium font-display text-green-600'>Groceyilsh</span>
                                 <span className='font-quicksand-w600 text-sm font-medium font-display text-gray-400'>GROCERY</span>
@@ -101,34 +103,27 @@ function TopNavbar1() {
                                     </div>
                                     <i className='ml-[-55px] mt-[23px] fas fa-chevron-down text-gray-600'></i>
                                 </li>
-                                
+
                             ))}
 
-                            {/* <li className='-mx-28 md:mx-0 flex items-center px-[1vh] whitespace-nowrap mr-[3vh]' >
-                                <i className="fas fa-shopping-cart text-gray-600">
-                                </i>
-                                <div className="flex  text-center">
-                                    <span className='font-quicksand-w500 text-gray-600 px-1'>
-                                        <a href="/mycart">My Cart</a>
-                                    </span>
-                                    <span className='font-quicksand-w500 text-green-500 mx-[-69%]'>
-                                        <br />${navbarStates.cartTotal}
-                                    </span>
-                                    <span className="font-quicksand-w500 mx-[-9px] absolute bg-green-500 text-white text-xs rounded-full w-4 h-4 flex justify-center">
-                                        {navbarStates.cartCount}
-                                    </span>
-                                </div>
-                                <i className='ml-[-55px] mt-[23px] fas fa-chevron-down text-gray-600'></i>
-                            </li> */}
-
                             {/* Profile */}
-                            <li className='flex items-center flex-shrink-0'>
-                                <img alt="Profile picture of Ramzi Cherif" className="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/aHk9lAvYIxZ9NVuCqukqLQLVuZVlTuSxjBob7Z4K5ACEs15E.jpg" width="40" />
-                                <span className="font-quicksand-w700 text-gray-600 hidden sm:flex">
-                                    Ramzi Cherif
-                                </span>
-                                <i className='ml-2 mt-1 fas fa-chevron-down text-gray-600'></i>
-                            </li>
+                            {active &&
+                                <li className='flex items-center flex-shrink-0'>
+                                    <img alt="Profile picture of Ramzi Cherif" className="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/aHk9lAvYIxZ9NVuCqukqLQLVuZVlTuSxjBob7Z4K5ACEs15E.jpg" width="40" />
+                                    <span className="font-quicksand-w700 text-gray-600 hidden sm:flex ml-2">
+                                        {userName}
+                                    </span>
+                                    <i className='ml-2 mt-1 fas fa-chevron-down text-gray-600'></i>
+                                </li>}
+                            {!active &&
+                                <li className='flex items-center flex-shrink-0'>
+                                    <button className='w-20 h-8 bg-green-500 rounded-sm'>
+                                        <a href='/login' className="font-quicksand-w700 ml-4 text-white hidden sm:flex">
+                                            Login
+                                        </a>
+                                    </button>
+                                </li>}
+
                         </ul>
                     </div>
 

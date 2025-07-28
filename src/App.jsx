@@ -18,43 +18,53 @@ import Wishlist from './components/WishList/Wishlist';
 import MyCart from './components/MyCart/MyCart';
 import Footer from './components/Sections/Footer';
 import Register from './components/Register/Register';
-
-
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import ProtectedRoute from './components/PrivateRoute/ProtectedRoute';
+import Addprd from './components/Seller/Addprd/Addprd';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
+  const isLoggedIn = window.localStorage.getItem("isloggedIn");
+  const userType = window.localStorage.getItem("userType");
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <Router>
-      <Routes>
-        {/* Login route outside NavBarContextProvider */}
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register/>}/>
-        
-        {/* All other routes wrapped in NavBarContextProvider */}
-        <Route path="/*" element={
-          <NavBarContextProvider>
-            <TopNavbar1 />
-            <TopNavbar2 />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/hotdeals" element={<HotDeals />} />
-              <Route path='/promotion' element={<Promotions />} />
-              <Route path='/newprds' element={<NewProducts />} />
-              <Route path='/support' element={<Support />} />
-              <Route path='/support/delayindelevery' element={<DelayInDelevery />} />
-              <Route path='/support/afterdelevery' element={<AfterDelevery />} />
-              <Route path='/support/qualityissue' element={<QualityIssue />} />
-              <Route path='/wishlist' element={<Wishlist />} />
-              <Route path='/mycart' element={<MyCart />} />
-            </Routes>
-            <FeaturesSection />
-            <Footer />
-            {/* <GetWindowWidth/> */}
-          </NavBarContextProvider>
-        } />
-      </Routes>
-    </Router>
+        <Routes>
+          {/* Login route outside NavBarContextProvider */}
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+
+          {/* All other routes wrapped in NavBarContextProvider */}
+          <Route path="/*" element={
+            <NavBarContextProvider>
+              <TopNavbar1 />
+              <TopNavbar2 />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/hotdeals" element={<HotDeals />} />
+                <Route path='/promotion' element={<Promotions />} />
+                <Route path='/newprds' element={<NewProducts />} />
+                <Route path='/support' element={<Support />} />
+                <Route path='/support/delayindelevery' element={<DelayInDelevery />} />
+                <Route path='/support/afterdelevery' element={<AfterDelevery />} />
+                <Route path='/support/qualityissue' element={<QualityIssue />} />
+
+                <Route element={<ProtectedRoute />}>
+                  <Route path='/wishlist' element={<Wishlist />} />
+                  <Route path='/mycart' element={<MyCart />} />
+                </Route>
+
+                <Route path='/seller/addprd' element={<Addprd />} />
+
+              </Routes>
+              <FeaturesSection />
+              <Footer />
+            </NavBarContextProvider>
+          } />
+        </Routes>
+      </Router>
     </>
   )
 }
