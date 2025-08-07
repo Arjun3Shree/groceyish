@@ -25,7 +25,7 @@ function Login() {
         const res = await loginHandler(formdata);
         console.log("REsponse:", res);
         toast.success("Login successfull!!");
-        setFormData({email: "", password: ""});
+        setFormData({ email: "", password: "" });
         navigate(from, { replace: true });
     }
 
@@ -72,16 +72,16 @@ function Login() {
                                             />
                                         </div>
                                     </div>
-                                
 
-                                <div className="text-center mb-6">
-                                    <button
-                                        className="w-48 py-3 px-4 text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-200"
-                                        type="submit"
-                                    >
-                                        Submit
-                                    </button>
-                                </div>
+
+                                    <div className="text-center mb-6">
+                                        <button
+                                            className="w-48 py-3 px-4 text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-200"
+                                            type="submit"
+                                        >
+                                            Submit
+                                        </button>
+                                    </div>
                                 </form>
 
                                 <div className="text-center">
