@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import NavBarContext from '../../context/NavbarContext';
+import UserDropDown from './UserDropDown';
 import Glogo from "/Assets/Img/Grosory_Logo.PNG";
 
 function TopNavbar1() {
@@ -8,17 +9,32 @@ function TopNavbar1() {
 
     // const navigate = useNavigate();
     const [margintop, setMargintop] = useState("mt-[-90%]")
+    const [userDrpDown, setUserDrpDown] = useState(false);
+    const dropdownRef = useRef(null);
 
     const navToggler = () => {
         setMargintop((prevclssname) => prevclssname === "mt-[-90%]" ? "mt-[5%]" : "mt-[-90%]")
     }
 
-    const active = localStorage.getItem("isloggedIn") || false;
-    const userName = localStorage.getItem("callsign");
+    const active = sessionStorage.getItem("isloggedIn") || false;
+    const userName = sessionStorage.getItem("callsign");
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setUserDrpDown(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [])
 
     return (
         <>
-            <nav className='z-50 p-3 flex bg-white fixed top-0 left-0 w-[100%] overflow-hidden'>
+            <nav className='z-10 p-3 flex bg-white fixed top-0 left-0 w-[100%] overflow-hidden'>
                 <div className='flex flex-nowrap items-center justify-between space-x-12 w-full'>
 
                     {/* Nav Icon */}
@@ -108,13 +124,18 @@ function TopNavbar1() {
 
                             {/* Profile */}
                             {active &&
-                                <li className='flex items-center flex-shrink-0'>
-                                    <img alt="Profile picture of Ramzi Cherif" className="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/aHk9lAvYIxZ9NVuCqukqLQLVuZVlTuSxjBob7Z4K5ACEs15E.jpg" width="40" />
-                                    <span className="font-quicksand-w700 text-gray-600 hidden sm:flex ml-2">
-                                        {userName}
-                                    </span>
-                                    <i className='ml-2 mt-1 fas fa-chevron-down text-gray-600'></i>
-                                </li>}
+                                <button onClick={() => setUserDrpDown(!userDrpDown)}>
+                                    <li className='flex items-center flex-shrink-0'>
+                                        <img alt="Profile picture of Ramzi Cherif" className="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/aHk9lAvYIxZ9NVuCqukqLQLVuZVlTuSxjBob7Z4K5ACEs15E.jpg" width="40" />
+                                        <span className="font-quicksand-w700 text-gray-600 hidden sm:flex ml-2">
+                                            {userName}
+
+                                        </span>
+                                        <i className='ml-2 mt-1 fas fa-chevron-down text-gray-600'>
+                                        </i>
+                                    </li>
+                                </button>}
+                            {userDrpDown && <UserDropDown /> }
                             {!active &&
                                 <li className='flex items-center flex-shrink-0'>
                                     <button className='w-20 h-8 bg-green-500 rounded-sm'>

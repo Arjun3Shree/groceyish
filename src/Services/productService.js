@@ -29,6 +29,17 @@ export const getAllProductListService = async () => {
     }
 }
 
+export const getAllProductsByOwnerService = async() => {
+    try {
+        const response = await apiJson.post('/product/get-productBy-owner');
+        // console.log("Response: ", response);
+        return response;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 export const createOneProductService = async(prdData) => {
     try {
         const response = await apiForm.post('/product/register-product', prdData);

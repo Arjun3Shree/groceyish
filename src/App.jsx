@@ -21,6 +21,8 @@ import Register from './components/Register/Register';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import ProtectedRoute from './components/PrivateRoute/ProtectedRoute';
 import Addprd from './components/Seller/Addprd/Addprd';
+import SellerPanel from './components/Seller/SellerPanl/SellerPanel';
+import AllProducts from './components/Sections/AllProducts';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -54,9 +56,11 @@ function App() {
                 <Route element={<ProtectedRoute />}>
                   <Route path='/wishlist' element={<Wishlist />} />
                   <Route path='/mycart' element={<MyCart />} />
+                  <Route path='/seller/allprd' element={<AllProducts/>} />
                 </Route>
 
                 <Route path='/seller/addprd' element={<Addprd />} />
+                <Route path='/seller' element={<SellerPanel/>} />
 
               </Routes>
               <FeaturesSection />

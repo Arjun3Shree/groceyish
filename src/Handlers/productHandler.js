@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { getAllProductListService, createOneProductService } from "../Services/productService.js";
+import { getAllProductListService, createOneProductService, getAllProductsByOwnerService } from "../Services/productService.js";
 
 const getAllProductListHandler = async () => {
     const result = await getAllProductListService();
@@ -29,4 +29,9 @@ const createNewProductHandler = async(prdData) => {
     
 }
 
-export { getAllProductListHandler,  createNewProductHandler}
+const getAllProductsByOwnerHandler = async() => {
+    const response = await getAllProductsByOwnerService();
+    return response.data.data.products;
+}
+
+export { getAllProductListHandler,  createNewProductHandler, getAllProductsByOwnerHandler}

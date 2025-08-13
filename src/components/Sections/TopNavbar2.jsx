@@ -20,7 +20,7 @@ function TopNavbar2() {
 
     return (
         <>
-            <nav className='pb-3 flex bg-white pt-5 mt-16 w-[100%] overflow-hidden'>
+            <nav className='z-10 pb-3 flex bg-white pt-5 mt-16 w-[100%] overflow-hidden'>
 
                 <div className={`nav-links ${margintop} ml-5 md:mt-0 duration-500 flex flex-shrink-2 items-center p4 md:space-x-[8vw]`}>
 

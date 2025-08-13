@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import CardBestSells from './Cards/CardBestSells'
 import CardOfferTimmer from './Cards/CardOfferTimmer'
-
+import { loginHandler } from '../../Handlers/authHandler'
 function BestSail() {
   let cardFeatured = {
     1: { offer_text: 'Save 10%', offer_text_coller: 'white', offer_bg: '#FFD480', category: 'Coffe & teas', itemName: 'Coffe 1Kg', rating: '4', vender: 'Mr.food', offerPrice: '20', mrp: '25', sold: '20', totalAvailabe: '50', imgName: 'Bestsell-coffe' },
@@ -53,6 +53,28 @@ function BestSail() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollWidth = 4 * 255;
 
+  const isLogin = sessionStorage.getItem('isloggedIn') || false;
+  const [formdata, setFormData] = useState({
+          email: "",
+          password: ""
+      });
+
+  const handleChange = (e) => {
+        setFormData({
+            ...formdata,
+            [e.target.name]: e.target.value
+        });
+    };
+
+  const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await loginHandler(formdata);
+        console.log("REsponse:", res);
+        toast.success("Login successfull!!");
+        setFormData({ email: "", password: "" });
+        navigate(from, { replace: true });
+    }
+
   const handleScrollLeft = () => {
     const newPosition = Math.max(scrollPosition - scrollWidth, 0);
     sliderRef.current.scrollTo({
@@ -101,7 +123,7 @@ function BestSail() {
     let initialHours = 10;
     let initialMunutes = 59;
     let initialSecond = 0;
-    return initialHours*3600 + initialMunutes * 60 + initialSecond;
+    return initialHours * 3600 + initialMunutes * 60 + initialSecond;
   }
 
   const [timeLeft, setTimeLeft] = useState(calculateTotalSecond())
@@ -113,18 +135,18 @@ function BestSail() {
 
   useEffect(() => {
     let intervalId;
-    if(isRunning && timeLeft > 0){
-      intervalId = setInterval(()=>{
+    if (isRunning && timeLeft > 0) {
+      intervalId = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
-    }else if (timeLeft === 0){
+    } else if (timeLeft === 0) {
       setIsRunning(false);
     }
-    return ()=> clearInterval(intervalId);
+    return () => clearInterval(intervalId);
   }, [isRunning, timeLeft])
 
   const formatTime = (time) => {
-    return time.toString().padStart(2,'0');
+    return time.toString().padStart(2, '0');
   }
 
   return (
@@ -139,7 +161,7 @@ function BestSail() {
             <button onClick={() => setBestSellCtgButton(featured)} className={`text-lg  ${bestSellCtgButton === 'featured' ? 'font-quicksand-w600 text-green-600' : 'font-quicksand-w400'}`}>Featured</button>
             <button onClick={() => setBestSellCtgButton(popular)} className={`text-lg  ${bestSellCtgButton === 'popular' ? 'font-quicksand-w600 text-green-600' : 'font-quicksand-w400'}`}>Popular</button>
             <button onClick={() => setBestSellCtgButton(newItem)} className={`text-lg  ${bestSellCtgButton === 'newItem' ? 'font-quicksand-w600 text-green-600' : 'font-quicksand-w400'}`}>New</button>
-            <CardOfferTimmer msgHour={8} msgMinuts={59}/>
+            <CardOfferTimmer msgHour={8} msgMinuts={59} />
           </div>
 
           <div className='flex mr-[6vw] gap-7'>
@@ -192,28 +214,36 @@ function BestSail() {
 
           {/*Login-Register Card  */}
 
-          <div className='relative border-2 border-solid border-gray-200 h-auto min-w-72 max-w-72 mx-4 bg-[#FFF7E6CC]'>
-            <img className='w-full h-full opacity-15' src="/src/assets/Images/bg-hero-img.png" alt="Coffe" />
+          {!isLogin && (
+            
+              <div className='relative border-2 border-solid border-gray-200 h-auto min-w-72 max-w-72 mx-4 bg-[#FFF7E6CC]'>
+                <img className='w-full h-full opacity-15' src="/src/assets/Images/bg-hero-img.png" alt="Coffe" />
 
-            <p className='absolute transform font-quicksand-w700 text-5xl text-blue-950 -translate-x-1/2 -translate-y-1/2 top-[50px] left-[150px] h-[40px] w-[205px]'>10% OFF</p>
-            <p className='absolute transform font-quicksand-w500 text-xl text-center text-blue-950 -translate-x-1/2 -translate-y-1/2 top-32 left-36 h-[28px] w-[250px]'>For new member sign up at the first time</p>
+                <form action="" onSubmit={handleSubmit}>
 
-            {/* Email Input */}
-            <p className='absolute transform font-quicksand-w500 text-lg -translate-x-1/2 -translate-y-1/2 top-[220px] left-[88px] h-[40px] w-[150px]'>Email address</p>
-            <i className="fas fa-envelope text-blue-950 my-auto absolute transform -translate-x-1/2 -translate-y-1/2 top-[252px] left-[28px] p-3 bg-white"></i>
-            <input className='absolute transform -translate-x-1/2 -translate-y-1/2 top-[252px] left-[154px] h-[38px] w-[220px] pl-2' type="text" placeholder='john@gmail.com' />
+                <p className='absolute transform font-quicksand-w700 text-5xl text-blue-950 -translate-x-1/2 -translate-y-1/2 top-[50px] left-[150px] h-[40px] w-[205px]'>10% OFF</p>
+                <p className='absolute transform font-quicksand-w500 text-xl text-center text-blue-950 -translate-x-1/2 -translate-y-1/2 top-32 left-36 h-[28px] w-[250px]'>For new member sign up at the first time</p>
 
-            {/* Password */}
-            <p className='absolute transform font-quicksand-w500 text-lg -translate-x-1/2 -translate-y-1/2 top-[303px] left-[139px] h-[40px] w-[250px]'>Password</p>
-            <i className="fas fa-key text-blue-950 my-auto absolute transform -translate-x-1/2 -translate-y-1/2 top-[328px] left-[27px] p-3 bg-white"></i>
-            <input className='absolute transform -translate-x-1/2 -translate-y-1/2 top-[328px] left-[154px] h-[40px] w-[220px] pl-2' type="text" placeholder='Password' />
+                {/* Email Input */}
+                <p className='absolute transform font-quicksand-w500 text-lg -translate-x-1/2 -translate-y-1/2 top-[220px] left-[88px] h-[40px] w-[150px]'>Email address</p>
+                <i className="fas fa-envelope text-blue-950 my-auto absolute transform -translate-x-1/2 -translate-y-1/2 top-[252px] left-[28px] p-3 bg-white"></i>
+                <input className='absolute transform -translate-x-1/2 -translate-y-1/2 top-[252px] left-[154px] h-[38px] w-[220px] pl-2' type="text" value={formdata.email} onChange={handleChange} placeholder='john@gmail.com' />
 
-            <button className='absolute transform -translate-x-1/2 -translate-y-1/2 top-[420px] left-[147px]  bg-[#3BB77E] flex rounded-sm px-4 mb-2 mt-4 mx-auto'>
-              <p className='font-quicksand-w400 text-lg p-2 w-36 text-white mx-1'>Register Now</p>
-            </button>
+                {/* Password */}
+                <p className='absolute transform font-quicksand-w500 text-lg -translate-x-1/2 -translate-y-1/2 top-[303px] left-[139px] h-[40px] w-[250px]'>Password</p>
+                <i className="fas fa-key text-blue-950 my-auto absolute transform -translate-x-1/2 -translate-y-1/2 top-[328px] left-[27px] p-3 bg-white"></i>
+                <input className='absolute transform -translate-x-1/2 -translate-y-1/2 top-[328px] left-[154px] h-[40px] w-[220px] pl-2' type="password" value={formdata.password} onChange={handleChange} placeholder='Password' />
+
+                <button type='submit' className='absolute transform -translate-x-1/2 -translate-y-1/2 top-[420px] left-[147px]  bg-[#3BB77E] flex rounded-sm px-4 mb-2 mt-4 mx-auto'>
+                  <p className='font-quicksand-w400 text-lg p-2 w-36 text-white mx-1'>Login Now</p>
+                </button>
 
 
-          </div>
+                </form>
+
+
+              </div>
+          )}
 
 
 
