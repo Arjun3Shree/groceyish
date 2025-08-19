@@ -1,10 +1,16 @@
 import React from 'react'
+import { User, LogOut } from 'lucide-react';
+import { logOutHandler } from '../../Handlers/authHandler';
 
 function UserDropDown() {
     const userType = sessionStorage.getItem('userType');
     let mprd = false;
-    if(userType == "seller"){
+    if (userType == "seller") {
         mprd = true;
+    }
+
+    const logOutSession = async () => {
+        await logOutHandler();
     }
     return (
         <>
@@ -29,7 +35,7 @@ function UserDropDown() {
                         <span className="text-gray-700 font-medium">Manage Products</span>
                     </a>
                     }
-                    
+
 
                     {/* Divider */}
                     <div className="border-t border-gray-100 my-1"></div>
@@ -40,6 +46,11 @@ function UserDropDown() {
                     >
                         <i class="fa fa-id-badge" aria-hidden="true"></i>
                         <span className="text-gray-700 font-medium">View Profile</span>
+                    </a>
+
+                    <a className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors border rounded-md" href='/'>
+                        <LogOut size={16} className="text-red-600" />
+                        <button onClick={logOutSession} className="text-red-400 font-medium">Log Out</button>
                     </a>
                 </div>
             </div>

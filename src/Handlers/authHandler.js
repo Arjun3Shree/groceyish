@@ -24,4 +24,13 @@ const loginHandler = async (userData) => {
     }
 }
 
-export {registerHandler, loginHandler};
+const logOutHandler = async () => {
+    localStorage.removeItem("userType");
+    sessionStorage.removeItem("userType");
+    sessionStorage.removeItem("accessToken");
+    sessionStorage.removeItem("callsign");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("isloggedIn");
+}
+
+export {registerHandler, loginHandler, logOutHandler};
